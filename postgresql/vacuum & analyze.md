@@ -38,23 +38,27 @@ vacuum (verbose, analyze, parallel 4);
 
 1. statement_timeout 설정 변경
    ```sql
-   -- 세션에서 타임아웃 해제
+   -- 세션에서 타임아웃 해제 (현재 세션에만 적용)
    SET statement_timeout = 0;
    ```
 
 2. vacuumdb 옵션 사용
    ```bash
    # --echo 옵션으로 실행되는 명령 확인 가능
+   # --statement-timeout=0은 해당 vacuum 작업 세션에만 적용
    vacuumdb --jobs=4 -d database_name --statement-timeout=0 --echo
    ```
 
 3. 환경변수 설정
    ```bash
+   # PGOPTIONS 환경변수는 해당 터미널 세션에서만 유효
    export PGOPTIONS='-c statement_timeout=0'
    vacuumdb --jobs=4 -d database_name
    ```
 
 주의사항:
+- 위 설정들은 모두 일시적이며 해당 세션에만 적용됨
+- 서버의 전역 설정은 변경되지 않음
 - idle_in_transaction_session_timeout
 - lock_timeout
 - statement_timeout
