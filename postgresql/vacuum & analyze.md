@@ -34,5 +34,30 @@ vacuum (verbose, analyze, parallel 4);
 
 주의: SQL의 VACUUM 명령어 자체는 단일 테이블만 처리 가능
 
+# VACUUM 실행 시 타임아웃 방지
+
+1. statement_timeout 설정 변경
+   ```sql
+   -- 세션에서 타임아웃 해제
+   SET statement_timeout = 0;
+   ```
+
+2. vacuumdb 옵션 사용
+   ```bash
+   # --echo 옵션으로 실행되는 명령 확인 가능
+   vacuumdb --jobs=4 -d database_name --statement-timeout=0 --echo
+   ```
+
+3. 환경변수 설정
+   ```bash
+   export PGOPTIONS='-c statement_timeout=0'
+   vacuumdb --jobs=4 -d database_name
+   ```
+
+주의사항:
+- idle_in_transaction_session_timeout
+- lock_timeout
+- statement_timeout
+위 세 가지 타임아웃 설정 모두 고려 필요
 
 #postgresql
