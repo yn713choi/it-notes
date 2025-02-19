@@ -1,3 +1,5 @@
+vacuumdb 사용 시 [[postgresql-client]] Docker Image 사용.
+
 vacuumdb -h 192.168.1.100 -p 5432 -U postgres -v -f -z -t public.table_name dbname
 
 vacuumdb -h 192.168.1.100 -p 5432 -U postgres -v -d dbname --analyze --jobs=4
