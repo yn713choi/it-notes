@@ -35,3 +35,4 @@ vacuum (verbose, analyze, parallel 4);
 주의: SQL의 VACUUM 명령어 자체는 단일 테이블만 처리 가능
 
 
+#postgresql
