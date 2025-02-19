@@ -174,8 +174,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -190,8 +189,16 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "a91b728a20fba20c",
+  "active": "090595702e4c623b",
   "lastOpenFiles": [
+    "dockerfiles/postgresql-client/README.md",
+    "dockerfiles/postgresql-client/postgresql-client.md",
+    "dockerfiles/postgresql-client/Dockerfile",
+    "dockerfiles/postgresql-client",
+    "dockerfiles/postgresql-client.md",
+    "dockerfiles/Dockerfile_postgresql_client",
+    "dockerfiles/Dockerfile_",
+    "dockerfiles",
     "postgresql/vacuum & analyze.md",
     "etc/obsidian.md",
     "postgresql/vacuum & analyze",
