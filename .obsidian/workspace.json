@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "postgresql/pg_stat_statements.md",
+                "file": "Welcome.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "pg_stat_statements"
+              "title": "Welcome"
             }
           }
         ]
@@ -167,8 +167,15 @@
   },
   "active": "3f86142dfefe9a60",
   "lastOpenFiles": [
+    "etc/재택근무 솔루션 비교.md",
+    "opensource/terraform init, kubectl plugin 설치.md",
+    "etc",
+    "재택근무 솔루션.md",
     "postgresql/aurora-postgresql.md",
+    "opensource/RabbitMQ 설치.md",
     "postgresql/pg_stat_statements.md",
+    "opensource",
+    "Untitled.md",
     "postgresql/README.md",
     "postgresql",
     "postgresql-tip.md",

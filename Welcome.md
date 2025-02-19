@@ -1,5 +1,3 @@
-This is your new *vault*.
+IT 관련 노트 모음
 
-Make a note of something, [[create a link]], or try [the Importer](https://help.obsidian.md/Plugins/Importer)!
-
-When you're ready, delete this note and make the vault your own.
+이것 저것 기록하기 위해 노력중..
