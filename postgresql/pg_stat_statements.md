@@ -1,7 +1,5 @@
 PostgreSQL 13 버전부터는 실제로 컬럼명이 다릅니다. 수정된 버전을 제시해드리겠습니다:
 
-````markdown:obsidian/postgresql-tip.md
-// ... existing code ...
 
 ### 1. 가장 많은 시간을 소요한 쿼리 확인
 ```sql

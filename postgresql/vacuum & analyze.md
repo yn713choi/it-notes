@@ -54,7 +54,7 @@ vacuum (verbose, analyze, parallel 4);
 3. 환경변수 설정
    ```bash
    # PGOPTIONS 환경변수는 해당 터미널 세션에서만 유효
-   export PGOPTIONS='-c statement_timeout=0'
+   export PGOPTIONS='-c statement_timeout=0 -c idle_in_transaction_session_timeout=0'
    vacuumdb --jobs=4 -d database_name
    ```
 
