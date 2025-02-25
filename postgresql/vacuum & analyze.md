@@ -66,4 +66,75 @@ vacuum (verbose, analyze, parallel 4);
 - statement_timeout
 위 세 가지 타임아웃 설정 모두 고려 필요
 
+# VACUUM 타임아웃 방지 (vacuumdb 사용)
+
+## 1. 환경변수를 통한 타임아웃 설정
+
+### 1.1. Windows CMD에서 설정
+```cmd
+:: 환경변수 설정
+set PGOPTIONS="-c statement_timeout=0 -c lock_timeout=0 -c idle_in_transaction_session_timeout=0"
+
+:: vacuumdb 실행
+vacuumdb --jobs=4 -d database_name -v
+```
+
+### 1.2. Windows PowerShell에서 설정
+```powershell
+# 환경변수 설정
+$env:PGOPTIONS="-c statement_timeout=0 -c lock_timeout=0 -c idle_in_transaction_session_timeout=0"
+
+# vacuumdb 실행
+vacuumdb --jobs=4 -d database_name -v
+```
+
+## 2. vacuumdb 명령어 옵션
+
+### 2.1. 기본 사용법
+```bash
+vacuumdb -h hostname -p 5432 -U username -d dbname [옵션들]
+```
+
+### 2.2. 주요 옵션
+```bash
+--jobs=4                    # 병렬 처리 작업 수
+--statement-timeout=0       # 명령어 타임아웃 비활성화
+-v, --verbose              # 상세 출력
+-f, --full                 # FULL VACUUM 실행
+-z, --analyze              # ANALYZE 실행
+-t, --table=TABLE          # 특정 테이블만 처리
+```
+
+### 2.3. 실제 사용 예시
+```bash
+# 전체 데이터베이스 VACUUM
+vacuumdb -h localhost -U postgres -d mydb --jobs=4 --verbose --statement-timeout=0
+
+# 특정 테이블만 VACUUM
+vacuumdb -h localhost -U postgres -d mydb -t mytable --verbose --statement-timeout=0
+
+# VACUUM FULL + ANALYZE
+vacuumdb -h localhost -U postgres -d mydb --full --analyze --verbose
+```
+
+## 3. 주의사항
+
+### 3.1. 실행 전 확인사항
+- 충분한 디스크 공간 확보
+- 데이터베이스 연결 가능 여부 확인
+- 적절한 데이터베이스 권한 보유
+
+### 3.2. 성능 고려사항
+- jobs 옵션은 서버 CPU 코어 수 고려하여 설정
+- FULL 옵션 사용 시 테이블 락이 걸리므로 주의
+- 피크 시간대를 피해서 실행
+
+### 3.3. 모니터링
+```sql
+-- 진행 상황 확인
+SELECT pid, datname, usename, query, state
+FROM pg_stat_activity
+WHERE query LIKE 'VACUUM%';
+```
+
 #postgresql
