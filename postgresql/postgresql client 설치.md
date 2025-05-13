@@ -76,3 +76,5 @@ psql -U postgres
   - PostgreSQL 서비스가 실행 중인지 확인
   - 서비스 앱에서 'postgresql-x64-{version}' 서비스 상태 확인
   - 필요한 경우 서비스 재시작
+
+

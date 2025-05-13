@@ -62,6 +62,13 @@ RUN curl -fsSL "https://github.com/derailed/k9s/releases/latest/download/k9s_Lin
     tar -xzf k9s.tar.gz -C /usr/local/bin k9s && \
     rm -f k9s.tar.gz
 
+# Helm 설치 (최신 안정 버전)
+RUN curl -fsSL "https://get.helm.sh/helm-v3.17.3-linux-amd64.tar.gz" -o "helm.tar.gz" && \
+    tar -xzf helm.tar.gz && \
+    mv linux-amd64/helm /usr/local/bin/helm && \
+    chmod +x /usr/local/bin/helm && \
+    rm -rf helm.tar.gz linux-amd64
+
 # 보안 설정
 RUN chmod 600 /etc/shadow && \
     chmod 600 /etc/gshadow && \
